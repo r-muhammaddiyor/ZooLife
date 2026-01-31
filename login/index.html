@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- linking with style.css -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <!-- linking with boxicon.com -->
+    <link rel="icon" href="#" />
+    <!-- your logo optional -->
+    <title>Login to cars</title>
+  </head>
+
+  <body>
+    <!-- Sign up -->
+    <div class="container" id="container">
+      <div class="form-container sign-up">
+        <form id="signUpForm">
+          <h1>Create Account</h1>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61577012215356" target="_blank" class="icons"><i class="bx bxl-google"></i></a>
+            <a href="saidjonodilov18@gmail.com" target="_blank" class="icons"><i class="bx bxl-facebook"></i></a>
+            <a href="https://github.com/r-muhammaddiyor" target="_blank" class="icons"><i class="bx bxl-github"></i></a>
+          </div>
+          <span>Register with Login</span>
+          <input type="text" name="username" placeholder="Enter Login" />
+          <input type="password" name="password" placeholder="Enter Password" />
+          <button id="signUpButton">Sign Up</button>
+        </form>
+      </div>
+
+      <!-- Sign in -->
+      <div class="form-container sign-in">
+        <form id="loginForm">
+          <h1>Sign In</h1>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61577012215356" target="_blank" class="icons"><i class="bx bxl-google"></i></a>
+            <a href="saidjonodilov18@gmail.com" target="_blank" class="icons"><i class="bx bxl-facebook"></i></a>
+            <a href="https://github.com/r-muhammaddiyor" target="_blank" class="icons"><i class="bx bxl-github"></i></a>
+          </div>
+          <span>Sign in With Login & Password</span>
+          <input type="text" name="username" placeholder="Enter Login" />
+          <input type="password" name="password" placeholder="Enter Password" />
+          <button id="signInButton">Sign In</button>
+        </form>
+      </div>
+
+      <!--Redirect to Sign in Page-->
+      <div class="toggle-container">
+        <div class="toggle">
+          <div class="toggle-panel toggle-left">
+            <h1>
+              Welcome To <br />
+              Hyper-S
+            </h1>
+            <p>Sign in With Email & Password</p>
+            <button class="hidden" id="login">Sign In</button>
+          </div>
+          <!--Redirect to Sign up Page-->
+          <div class="toggle-panel toggle-right">
+            <h1>Hello!</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tost -->
+
+    <div id="tost" class="fixed duration-700 right-5 gap-3 flex flex-col z-999! top-5"></div>
+
+    <template id="tostTemplate">
+      <div role="alert" class="alert alert-info">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          class="h-6 w-6 shrink-0 stroke-current"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <span>New software update available.</span>
+      </div>
+    </template>
+
+    <template id="tostTemplateSuccess">
+      <div role="alert" class="alert alert-success">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 shrink-0 stroke-current"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span>Your purchase has been confirmed!</span>
+      </div>
+    </template>
+
+    <template id="tostTemplate400">
+      <div id="toast-400" role="alert" class="toast toast-400">
+        <div class="toast-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="M12 9v4m0 4h.01M5.07 17a9 9 0 1113.86 0"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <div class="toast-content">
+          <strong>Bad Request</strong>
+          <span>Login yoki parol noto‘g‘ri kiritildi</span>
+        </div>
+      </div>
+    </template>
+
+    <!-- linking with scripts -->
+    <script type="module" src="../js/login.js"></script>
+  </body>
+</html>
+<!-- created by badr aouragh or boss.exe -->
