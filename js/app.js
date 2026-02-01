@@ -35,6 +35,11 @@ fetch('https://json-api.uz/api/project/game-over/animals/')
   .then((res) => {
     console.log(res);
 
+    const clone = elSuccessTost.cloneNode(true).content;
+    elTostContainer.appendChild(clone);
+    setTimeout(() => {
+      document.querySelector('[role="alert"]').remove();
+    }, 5000);
     ui(res.data);
   })
   .catch(() => {
@@ -43,6 +48,9 @@ fetch('https://json-api.uz/api/project/game-over/animals/')
   })
   .finally(() => {
     loader(false);
+    setTimeout(() => {
+      alert("Bu sitedan to'liq foydalanish uchun iltimos ro'yhatdan o'ting!");
+    }, 2000);
   });
 
 // ui
@@ -145,7 +153,6 @@ function deleteCard(id) {
   })
     .then((res) => res.text())
     .then((res) => {
-      console.log(res);
       const clone = elSuccessTost.cloneNode(true).content;
       evt.target.closest('.card').remove();
       elTostContainer.appendChild(clone);
@@ -153,7 +160,10 @@ function deleteCard(id) {
         document.querySelector('[role="alert"]').remove();
       }, 2000);
     })
-    .catch(() => {})
+    .catch(() => {
+      document.querySelector('#errorBox').classList.remove('hidden');
+      document.querySelector('#errorBox').classList.add('flex');
+    })
     .finally(() => {
       loader(false);
     });
@@ -223,7 +233,10 @@ elEditForm.addEventListener('submit', (evt) => {
         document.querySelector('[role="alert"]').remove();
       }, 2000);
     })
-    .catch(() => {})
+    .catch(() => {
+      document.querySelector('#errorBox').classList.remove('hidden');
+      document.querySelector('#errorBox').classList.add('flex');
+    })
     .finally(() => {
       loader(false);
     });
@@ -250,4 +263,4 @@ elExitBtn.addEventListener('click', () => {
 
 setInterval(() => {
   localStorage.removeItem('token');
-}, 10800000);
+}, 1800000);
