@@ -9,6 +9,7 @@ import {
   elEditModal,
   elEditForm,
   elEditSubmitBtn,
+  elAleartLogin,
 } from './html-elements.js';
 
 let editId = null;
@@ -17,6 +18,7 @@ if (isLogin()) {
   elExitBtn.classList.remove('hidden');
   const elLogin = document.getElementById('login');
   elLogin.classList.add('hidden');
+  elAleartLogin.classList.add('hidden');
 } else {
   elExitBtn.classList.add('hidden');
   const elAdd = document.getElementById('addBtn');
@@ -29,6 +31,8 @@ AOS.init({
   duration: 800,
   once: true,
 });
+
+elCardContainer.innerHTML = '';
 
 fetch('https://json-api.uz/api/project/game-over/animals/')
   .then((res) => res.json())
@@ -43,11 +47,6 @@ fetch('https://json-api.uz/api/project/game-over/animals/')
   })
   .finally(() => {
     loader(false);
-    // if (!isLogin()) {
-    //   setTimeout(() => {
-    //     alert("Bu sitedan to'liq foydalanish uchun iltimos ro'yhatdan o'ting!");
-    //   }, 2000);
-    // }
   });
 
 // ui
@@ -87,6 +86,10 @@ function ui(data) {
     clone.querySelector('.js-edit-button').id = element.id;
 
     elCardContainer.appendChild(clone);
+  });
+
+  elAleartLogin.addEventListener('click', () => {
+    elAleartLogin.classList.add('hidden');
   });
 
   AOS.refresh();

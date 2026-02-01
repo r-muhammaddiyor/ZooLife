@@ -8,6 +8,7 @@ const elSuccessTost = document.getElementById('successTostTemplate');
 const elEditModal = document.getElementById('editModal');
 const elEditForm = document.getElementById('editForm');
 const elEditSubmitBtn = document.getElementById('editSubmitBtn');
+const elAleartLogin = document.getElementById('alertInfo');
 
 export {
   elCardContainer,
@@ -20,4 +21,5 @@ export {
   elEditModal,
   elEditForm,
   elEditSubmitBtn,
+  elAleartLogin
 };
