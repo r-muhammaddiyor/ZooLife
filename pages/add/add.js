@@ -47,6 +47,20 @@ elForm.addEventListener('submit', (evt) => {
         result[key] = value;
       }
     });
-    add(result);
+
+    fetch('https://json-api.uz/api/project/game-over/animals', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+      body: JSON.stringify(result),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (typeof res == 'object') {
+          window.location.href = window.location.origin;
+        }
+      });
   }, 5000);
 });

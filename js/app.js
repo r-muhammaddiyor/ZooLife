@@ -54,6 +54,7 @@ fetch('https://json-api.uz/api/project/game-over/animals/')
 console.log(elCardTemplate);
 
 function ui(data) {
+  elCardContainer.innerHTML = '';
   data.forEach((element) => {
     const clone = elCardTemplate.cloneNode(true).content;
 
@@ -155,12 +156,27 @@ function deleteCard(id) {
   })
     .then((res) => res.text())
     .then((res) => {
-      const clone = elSuccessTost.cloneNode(true).content;
-      evt.target.closest('.card').remove();
-      elTostContainer.appendChild(clone);
-      setTimeout(() => {
-        document.querySelector('[role="alert"]').remove();
-      }, 2000);
+      if (res == 'deleted successfully') {
+        const clone = elSuccessTost.cloneNode(true).content;
+        fetch('https://json-api.uz/api/project/game-over/animals/')
+          .then((res) => res.json())
+          .then((res) => {
+            console.log(res);
+
+            ui(res.data);
+          })
+          .catch(() => {
+            document.querySelector('#errorBox').classList.remove('hidden');
+            document.querySelector('#errorBox').classList.add('flex');
+          })
+          .finally(() => {
+            loader(false);
+          });
+        elTostContainer.appendChild(clone);
+        setTimeout(() => {
+          document.querySelector('[role="alert"]').remove();
+        }, 2000);
+      }
     })
     .catch(() => {})
     .finally(() => {
