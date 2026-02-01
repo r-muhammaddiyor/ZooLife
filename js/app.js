@@ -35,11 +35,6 @@ fetch('https://json-api.uz/api/project/game-over/animals/')
   .then((res) => {
     console.log(res);
 
-    const clone = elSuccessTost.cloneNode(true).content;
-    elTostContainer.appendChild(clone);
-    setTimeout(() => {
-      document.querySelector('[role="alert"]').remove();
-    }, 5000);
     ui(res.data);
   })
   .catch(() => {
@@ -48,11 +43,11 @@ fetch('https://json-api.uz/api/project/game-over/animals/')
   })
   .finally(() => {
     loader(false);
-    if (!isLogin()) {
-      setTimeout(() => {
-        alert("Bu sitedan to'liq foydalanish uchun iltimos ro'yhatdan o'ting!");
-      }, 2000);
-    }
+    // if (!isLogin()) {
+    //   setTimeout(() => {
+    //     alert("Bu sitedan to'liq foydalanish uchun iltimos ro'yhatdan o'ting!");
+    //   }, 2000);
+    // }
   });
 
 // ui
@@ -126,6 +121,8 @@ elCardContainer.addEventListener('click', (evt) => {
     `;
   }
 });
+
+// loader
 
 function loader(bool) {
   if (bool) {
