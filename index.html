@@ -97,7 +97,10 @@
       </nav>
     </header>
 
-    <div class="bg-neutral-primary justify-center items-center hidden fixed inset-0 z-[99999999]" id="errorBox">
+    <div
+      class="bg-neutral-primary justify-center items-center hidden fixed inset-0 z-[99999999]"
+      id="errorBox"
+    >
       <div class="text-body">
         <span>Opps... Something wrong</span>
       </div>
@@ -119,142 +122,176 @@
 
       <!-- modal -->
 
-      <dialog id="editModal">
-        <form
-          id="form"
-          class="w-full max-w-2xl bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 space-y-6"
-        >
-          <h2 class="text-2xl font-semibold text-gray-800 dark:text-white text-center">
-            🐾 Edit animal
-          </h2>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- Name -->
-            <div>
-              <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300">
-                Animal name
-              </label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Cat"
-                required
-                class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
-              />
-            </div>
-
-            <!-- Category -->
-            <div>
-              <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300"> Category </label>
-              <input
-                type="text"
-                name="category"
-                placeholder="Fish"
-                required
-                class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
-              />
-            </div>
-
-            <!-- Speed -->
-            <div>
-              <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300"> Speed </label>
-              <input
-                type="number"
-                name="speed"
-                placeholder="56"
-                required
-                class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
-              />
-            </div>
-
-            <!-- Sound -->
-            <div>
-              <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300"> Sound </label>
-              <input
-                type="text"
-                name="soundText"
-                placeholder="Silent"
-                required
-                class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
-              />
-            </div>
-
-            <!-- Lifetime -->
-            <div>
-              <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300">
-                Lifetime (years)
-              </label>
-              <input
-                type="number"
-                name="year"
-                placeholder="30"
-                required
-                class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
-              />
-            </div>
-
-            <!-- Weight -->
-            <div>
-              <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300">
-                Weight (kg)
-              </label>
-              <input
-                type="number"
-                name="weight"
-                placeholder="1100"
-                required
-                class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
-              />
-            </div>
-
-            <!-- Color -->
-            <div>
-              <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300"> Color </label>
-              <input
-                type="text"
-                name="color"
-                placeholder="Gray"
-                required
-                class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
-              />
-            </div>
-
-            <!-- Habitat -->
-            <div>
-              <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300"> Habitat </label>
-              <input
-                type="text"
-                name="habitat"
-                placeholder="Ocean"
-                required
-                class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
-              />
-            </div>
-
-            <!-- Is Wild -->
-            <div class="md:col-span-2">
-              <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300">
-                Is wild animal?
-              </label>
-              <select
-                name="isWild"
-                class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      <dialog id="editModal" class="p-0 border-0 bg-transparent backdrop:bg-black/50">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+          <div class="fixed inset-0 flex items-center justify-center">
+            <form
+              id="editForm"
+              class="w-full max-w-2xl bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 space-y-6"
+            >
+              <button
+                onclick="editModal.close(); location.reload()"
+                type="button"
+                class="text-body cursor-pointer bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
+                data-modal-hide="static-modal"
               >
-                <option selected disabled>Select option</option>
-                <option value="true">Yes (Wild)</option>
-                <option value="false">No (Domestic)</option>
-              </select>
-            </div>
-          </div>
+                <svg
+                  class="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18 17.94 6M18 18 6.06 6"
+                  />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
 
-          <!-- Button -->
-          <button
-            type="submit"
-            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition"
-          >
-            ✅ Tasdiqlash
-          </button>
-        </form>
+              <h2 class="text-2xl font-semibold text-gray-800 dark:text-white text-center">
+                🐾 Edit animal
+              </h2>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Name -->
+                <div>
+                  <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300">
+                    Animal name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Cat"
+                    required
+                    class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
+                  />
+                </div>
+
+                <!-- Category -->
+                <div>
+                  <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300">
+                    Category
+                  </label>
+                  <input
+                    type="text"
+                    name="category"
+                    placeholder="Fish"
+                    required
+                    class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
+                  />
+                </div>
+
+                <!-- Speed -->
+                <div>
+                  <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300"> Speed </label>
+                  <input
+                    type="number"
+                    name="speed"
+                    placeholder="56"
+                    required
+                    class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
+                  />
+                </div>
+
+                <!-- Sound -->
+                <div>
+                  <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300"> Sound </label>
+                  <input
+                    type="text"
+                    name="soundText"
+                    placeholder="Silent"
+                    required
+                    class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
+                  />
+                </div>
+
+                <!-- Lifetime -->
+                <div>
+                  <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300">
+                    Lifetime (years)
+                  </label>
+                  <input
+                    type="number"
+                    name="year"
+                    placeholder="30"
+                    required
+                    class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
+                  />
+                </div>
+
+                <!-- Weight -->
+                <div>
+                  <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300">
+                    Weight (kg)
+                  </label>
+                  <input
+                    type="number"
+                    name="weight"
+                    placeholder="1100"
+                    required
+                    class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
+                  />
+                </div>
+
+                <!-- Color -->
+                <div>
+                  <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300"> Color </label>
+                  <input
+                    type="text"
+                    name="color"
+                    placeholder="Gray"
+                    required
+                    class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
+                  />
+                </div>
+
+                <!-- Habitat -->
+                <div>
+                  <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300">
+                    Habitat
+                  </label>
+                  <input
+                    type="text"
+                    name="habitat"
+                    placeholder="Ocean"
+                    required
+                    class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent px-3 py-2 text-sm text-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
+                  />
+                </div>
+
+                <!-- Is Wild -->
+                <div class="md:col-span-2">
+                  <label class="block mb-1 text-sm text-gray-600 dark:text-gray-300">
+                    Is wild animal?
+                  </label>
+                  <select
+                    name="isWild"
+                    class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  >
+                    <option selected disabled>Select option</option>
+                    <option value="true">Yes (Wild)</option>
+                    <option value="false">No (Domestic)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Button -->
+              <button
+                id="editSubmitBtn"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center font-medium py-3 rounded-xl transition"
+              >
+                ✅ Tasdiqlash
+              </button>
+            </form>
+          </div>
+        </div>
       </dialog>
     </main>
 
@@ -266,28 +303,25 @@
         data-aos-duration="3000"
         class="bg-neutral-primary-soft card block max-w-sm p-6 border border-default rounded-base shadow-xs"
       >
-        <h5
-          id="name"
-          class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8"
-        ></h5>
+        <h5 class="js-name mb-3 text-2xl font-semibold tracking-tight text-heading leading-8"></h5>
         <p class="mb-3 text-base text-heading">
-          Category: <span id="category" class="text-body"></span>
+          Category: <span class="js-category text-body"></span>
         </p>
         <p class="mb-3 text-base text-heading">
-          Speed: <span id="speed" class="text-body ml-1 mb-6"></span>
+          Speed: <span class="js-speed text-body ml-1 mb-6"></span>
         </p>
         <p class="mb-3 text-base text-heading">
-          Year: <span id="year" class="ml-1 text-body mb-6"></span>
+          Year: <span class="js-year ml-1 text-body mb-6"></span>
         </p>
         <p class="mb-3 text-base text-heading flex items-center">
-          Color: <span id="color" class="text-body inline-block ml-1"></span>
+          Color: <span class="js-color text-body inline-block ml-1"></span>
           <span class="w-5 inline-block ml-2.5 h-5 rounded-[50%]"></span>
         </p>
         <p class="mb-3 text-base text-heading">
-          Habitat: <span id="habitat" class="text-body ml-1 mb-6"></span>
+          Habitat: <span class="js-habitat text-body ml-1 mb-6"></span>
         </p>
 
-        <div class="flex justify-between items-center">
+        <div class="flex justify-end gap-2.5 items-center">
           <button
             type="button"
             class="js-delete-button text-white cursor-pointer bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"

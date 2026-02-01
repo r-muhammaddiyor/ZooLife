@@ -5,7 +5,9 @@ const elSkeletonContainer = document.getElementById('cardSkeletonContainer');
 const elExitBtn = document.getElementById('exitButton');
 const elTostContainer = document.getElementById('tostContainer');
 const elSuccessTost = document.getElementById('successTostTemplate');
-const elEditModal = document.getElementById('form');
+const elEditModal = document.getElementById('editModal');
+const elEditForm = document.getElementById('editForm');
+const elEditSubmitBtn = document.getElementById('editSubmitBtn');
 
 export {
   elCardContainer,
@@ -16,4 +18,6 @@ export {
   elTostContainer,
   elSuccessTost,
   elEditModal,
+  elEditForm,
+  elEditSubmitBtn,
 };

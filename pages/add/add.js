@@ -4,7 +4,7 @@ const elSubmitButton = document.getElementById('submitButton');
 function add(newTodos) {
   const token = localStorage.getItem('token');
 
-  fetch('http://localhost:3000/api/animals/', {
+  fetch('https://json-api.uz/api/project/game-over/animals', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -14,6 +14,11 @@ function add(newTodos) {
   })
     .then((res) => res.json())
     .then((res) => {
+      const clone = elSuccessTost.cloneNode(true).content;
+      elTostContainer.appendChild(clone);
+      setTimeout(() => {
+        document.querySelector('[role="alert"]').remove();
+      }, 2000);
       location.href = '/index.html';
     })
     .catch(() => {})
@@ -46,5 +51,4 @@ elForm.addEventListener('submit', (evt) => {
     });
     add(result);
   }, 5000);
-
 });
