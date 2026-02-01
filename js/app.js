@@ -48,9 +48,11 @@ fetch('https://json-api.uz/api/project/game-over/animals/')
   })
   .finally(() => {
     loader(false);
-    setTimeout(() => {
-      alert("Bu sitedan to'liq foydalanish uchun iltimos ro'yhatdan o'ting!");
-    }, 2000);
+    if (!isLogin()) {
+      setTimeout(() => {
+        alert("Bu sitedan to'liq foydalanish uchun iltimos ro'yhatdan o'ting!");
+      }, 2000);
+    }
   });
 
 // ui
@@ -160,10 +162,7 @@ function deleteCard(id) {
         document.querySelector('[role="alert"]').remove();
       }, 2000);
     })
-    .catch(() => {
-      document.querySelector('#errorBox').classList.remove('hidden');
-      document.querySelector('#errorBox').classList.add('flex');
-    })
+    .catch(() => {})
     .finally(() => {
       loader(false);
     });
@@ -233,10 +232,7 @@ elEditForm.addEventListener('submit', (evt) => {
         document.querySelector('[role="alert"]').remove();
       }, 2000);
     })
-    .catch(() => {
-      document.querySelector('#errorBox').classList.remove('hidden');
-      document.querySelector('#errorBox').classList.add('flex');
-    })
+    .catch(() => {})
     .finally(() => {
       loader(false);
     });
